@@ -7,45 +7,56 @@
 
 import SwiftUI
 
-struct BackRound: View {
+struct Themes: View {
     var body: some View {
         ZStack {
             
             Image(.name)
                 .resizable()
                 .ignoresSafeArea()
+                       
+            Text("Themes")
+                .font(.largeTitle)
+                .border(.white)
             
             Image(.cloud)
-                .offset(x:-113, y:230)
+            .offset(x:-113, y:220)
+            Text("States")
+            .offset(x:-113, y:220)
+
             
             Image(.cloud)
                 .offset(x: 113, y: 95)
-            
-            Text("The word")
-                .font(.system(size:48))
-                .fontWeight(.bold)
-                .border(.white)
-                .multilineTextAlignment(.center)
-            
+            Text("Sports")
+            .offset(x:113, y:95)
+
+            Image(.cloud)
+                .offset(x: -115, y: -85)
+            Text("Animals")
+                .offset(x: -115, y: -85)
             
             Image(.cloud)
                 .offset(x: 113, y: -150)
+            Text("Colors")
+                .offset(x: 113, y: -150)
+            
+        
+            Image(.cloud)
+                .offset(x:-113, y:-255)
+            Text("Fruits")
+                .offset(x:-113, y:-255)
+            
             
             Image(.cloud)
-                .offset(x:-113, y:-230)
+                .offset(x: 113, y:300)
+            Text("Cars")
+                .offset(x: 113, y:300)
                 
-            Text("Start")
-                .frame(width: 208, height: 92)
-                .background(Color.grey)
-                .foregroundColor(.black)
-                .border(.white)
-                .cornerRadius(10)
-                .offset(y:350)
-                 
+    
         }
     }
 }
 
 #Preview {
-  BackRound()
+  Themes()
 }
