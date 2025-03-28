@@ -7,39 +7,39 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct ContentView: View {
+    @State private var showDetail = false
+
     var body: some View {
-        ZStack {
-            Rectangle()
-                    .fill(
-                        RadialGradient(
-                                    gradient: Gradient(colors: [
-                                        Color(red: 0.95, green: 0.75, blue: 0.85), // Stronger pink (top)
-                                        Color(red: 1.0, green: 0.7, blue: 0.4),   // Vibrant orange (middle)
-                                        Color(red: 0.95, green: 0.75, blue: 0.85)  // Stronger pink (bottom)
-                                    ]),
-                                        center: .top,
-                                        startRadius: 20,
-                                        endRadius: 650
-                                    
-                                )
-                      
-                       )
-                    .edgesIgnoringSafeArea(.all)
-            
-            VStack{
-                
-                Text("The Word ")
-                    .font(.system(size:48))
-                    .multilineTextAlignment(.center)
-                
-                
-                
+        NavigationView {
+            ZStack {
+                VStack {
+                    Button("Show Detail") {
+                        withAnimation(.easeInOut(duration: 0.6)) {
+                            showDetail.toggle()
+                        }
+                    }
+                }
+
+                if showDetail {
+                    NavigationLink(destination: DetailView(), isActive: $showDetail) {
+                        EmptyView()
+                    }
+                    .transition(.move(edge: .top)) // Moves the new view from top to bottom
+                }
             }
         }
     }
 }
 
-#Preview {
-    ContentView()
+struct DetailView: View {
+    var body: some View {
+        Text("Detail View")
+            .font(.largeTitle)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.blue.opacity(0.3))
+            .ignoresSafeArea()
+    }
 }

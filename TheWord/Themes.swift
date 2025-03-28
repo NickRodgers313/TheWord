@@ -17,7 +17,7 @@ struct Themes: View {
                        
             Text("Themes")
                 .font(.largeTitle)
-                .border(.white)
+                .border(.black)
             
             Image(.cloud)
             .offset(x:-113, y:220)
