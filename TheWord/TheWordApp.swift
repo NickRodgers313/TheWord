@@ -11,7 +11,7 @@ import SwiftUI
 struct TheWordApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Start()
         }
     }
 }

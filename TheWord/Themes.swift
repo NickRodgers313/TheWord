@@ -14,49 +14,38 @@ struct Themes: View {
             Image(.name)
                 .resizable()
                 .ignoresSafeArea()
-                       
+            
             Text("Themes")
                 .font(.largeTitle)
                 .border(.black)
             
-            Image(.cloud)
-            .offset(x:-113, y:220)
-            Text("States")
-            .offset(x:-113, y:220)
-
             
-            Image(.cloud)
-                .offset(x: 113, y: 95)
-            Text("Sports")
-            .offset(x:113, y:95)
-
-            Image(.cloud)
-                .offset(x: -115, y: -85)
-            Text("Animals")
-                .offset(x: -115, y: -85)
-            
-            Image(.cloud)
-                .offset(x: 113, y: -150)
-            Text("Colors")
-                .offset(x: 113, y: -150)
-            
-        
-            Image(.cloud)
-                .offset(x:-113, y:-255)
-            Text("Fruits")
-                .offset(x:-113, y:-255)
-            
-            
-            Image(.cloud)
-                .offset(x: 113, y:300)
-            Text("Cars")
-                .offset(x: 113, y:300)
-                
-    
-        }
-    }
-}
-
+            let cloudPositions: [(CGPoint, String)] = [
+                           (CGPoint(x: -113, y: 220), "States"),
+                           (CGPoint(x: 113, y: 95), "Sports"),
+                           (CGPoint(x: -115, y: -85), "Animals"),
+                           (CGPoint(x: 113, y: -150), "Colors"),
+                           (CGPoint(x: -113, y: -255), "Fruits"),
+                           (CGPoint(x: 113, y: 300), "Cars")
+                       ]
+                       
+                       ForEach(cloudPositions, id: \.0) { data in
+                           let position = data.0
+                           let text = data.1
+                           
+                           ZStack {
+                               Image(.cloud)
+                                   .offset(x: position.x, y: position.y)
+                               
+                               Text(text)
+                                   .offset(x: position.x, y: position.y)
+                                   .foregroundColor(.white)
+                                   .bold()
+                           }
+                       }
+                   }
+               }
+           }
 #Preview {
   Themes()
 }
